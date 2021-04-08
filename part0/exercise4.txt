@@ -1,0 +1,14 @@
+browser->server: HTTP Post (user input sent), server address new_note
+server->browser: HTTP Status 302
+server to browser: asks browser to do GET request to address in header location (address notes)
+browser reloads Notes page, performs following fetch requests
+browser to server: GET main.css
+server to browser: main.css
+browser to server: GET main.js
+server to browser: main.js
+browser to server: GET data.json
+server to browser: data.json
+server accesses data by accessing req.body field of the req object
+server: new notes object, added to array named "notes"
+browser executes event handler and renders notes to show
+note: server doesn't save notes to database

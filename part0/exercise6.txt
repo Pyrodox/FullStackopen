@@ -1,0 +1,9 @@
+when new note created:
+browser to server: POST request to address new_note_spa
+contains the new note as JSON data with note and the timestamp (date and exact time)
+
+server to browser: status code 201 created, browser stays on same page, no further redirects or requests
+
+browser executes event handler and calls the method "e.preventDefault()" to prevent default way of form submitting
+event handler creates a new note and to add and display it to the notes list
+sends new note to server

@@ -1,0 +1,15 @@
+# comment: basically the same as the original if only considering loading
+# so, process is as follows:
+browser to server: GET https://fullstack-exampleapp.herokuapp.com
+server to browser: HTML-code
+browser to server: GET https://fullstack-exampleapp/herokuapp.com/kuva.png
+server to browser: returns image
+# go to notes page
+browser to server: GET main.css
+server to browser: main.css
+browser to server: GET main.js
+server to browser: main.js
+browser to server: GET data.json
+server to browser: data.json
+browser to server: GET data.json
+server to browser: event handler causes notes to display using DOM-API
