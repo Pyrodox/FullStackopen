@@ -1,55 +1,56 @@
-import React, { useState } from 'react'
-
-const Statistics = (props) => (
-  <div>
-  all: {props.good + props.neutral + props.bad} <br/>
-  average:  {(props.good + props.bad * -1) / (props.good + props.neutral + props.bad)} <br/>
-  positive: {(props.good / (props.good + props.neutral + props.bad)) * 100} %
-  </div>
-)
-
-const Button = (props) => (
-  <button onClick = {props.handleClick}>
-    {props.text}
-  </button>
-)
-
-const ifshow = (props) => {
-  if(props.good == 1 && props.neutral == 1 && props.bad == 1)
-    console.log("h");
-}
+import React from 'react'
 
 const App = () => {
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-
-  const setToValueG = newValue => {
-    setGood(newValue)
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
   }
 
-  const setToValueN = newValue => {
-    setNeutral(newValue)
+  const Header = (props) => {
+    return (
+      <div>
+        <p>{props.course}</p>
+      </div>
+    )
   }
 
-  const setToValueB = newValue => {
-    setBad(newValue)
+  const Content = (props) => {
+    return (
+      <div>
+        <p>{course.parts[0].name}: {course.parts[0].exercises}</p>
+        <p>{course.parts[1].name}: {course.parts[1].exercises}</p>
+        <p>{course.parts[2].name}: {course.parts[2].exercises}</p>
+      </div>
+    )
   }
 
-  
+  const Total = (props) => {
+    return (
+      <div>
+        <p>{props.total}</p>
+      </div>
+    )
+  }
 
   return (
     <div>
-      <Button handleClick = {() => setToValueG(good + 1)} text = 'good'/>
-      {" " + good + " "}
-      <Button handleClick = {() => setToValueN(neutral + 1)} text = 'neutral'/>
-      {" " + neutral + " "}
-      <Button handleClick = {() => setToValueB(bad + 1)} text = 'bad'/>
-      {" " + bad + " "} <br/>
-      <Statistics good = {good} neutral = {neutral} bad = {bad} />
-      <br/> 
-      <ifshow good = {good} neutral = {neutral} bad = {bad} />
-      </div>
+      <Header course = {course.name} />
+      <Content />
+      <Total total = {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises} />
+    </div>
   )
 }
 
