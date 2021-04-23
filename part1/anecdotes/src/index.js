@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
 
 const Button = (props) => (
   <button onClick={props.handleClick}> {props.text} </button>
@@ -50,4 +51,5 @@ const App = () => {
   )
 }
 
+ReactDOM.render(<App />, document.getElementById('root'))
 export default App
